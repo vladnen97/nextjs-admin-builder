@@ -6,7 +6,7 @@ type Options = {
 type SelectField = {
   name: string
   title: string
-  type: 'text'
+  type: 'select'
   options: Options[]
 }
 
@@ -14,7 +14,6 @@ type TextField = {
   name: string
   title: string
   type: 'text'
-  inputType: string
 }
 
 export type AdminBuildField = TextField | SelectField
