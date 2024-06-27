@@ -1,3 +1,9 @@
+import { Button } from '@/components/ui/button'
+
 export default function Home() {
-  return <main>Admin builder</main>
+  return (
+    <main>
+      <Button>test</Button>
+    </main>
+  )
 }
