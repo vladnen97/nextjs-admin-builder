@@ -1,7 +1,7 @@
-import { AdminEntityBuilderContainer } from '@/admin-builder/_container'
+import { AdminServerEntityBuilderContainer } from '@/admin-builder/_container'
 import { DbProvider } from '@/admin-builder/_db'
 
-export const EntityPageProvider = AdminEntityBuilderContainer.provider(
+export const EntityPageProvider = AdminServerEntityBuilderContainer.provider(
   (ctx) => {
     return async function EntityPage() {
       const db = ctx.innerDeps.db

@@ -1,3 +1,3 @@
-import { UserSchemaEntity } from '@/entities/user/db'
+import { userDb } from '@/entities/user/db'
 
-export const users = UserSchemaEntity
+export const users = userDb.schema
