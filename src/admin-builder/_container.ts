@@ -18,10 +18,18 @@ export const AdminDbEntityBuilderContainer = mergeContainers([
 export const AdminServerEntityBuilderContainer = mergeContainers([
   DbClientContainer,
   ConfigContainer,
-])
+]).extend<{
+  client: {
+    CreateEntityFrom: () => Element
+  }
+}>('AdminServerEntityBuilderContainer')
+
 export const AdminClientEntityBuilderContainer = mergeContainers([
   ConfigContainer,
-])
+]).extend<{
+  action: () => Promise<unknown>
+}>('AdminClientEntityBuilderContainer')
+
 export const AdminActionEntityBuilderContainer = mergeContainers([
   DbClientContainer,
   ConfigContainer,
