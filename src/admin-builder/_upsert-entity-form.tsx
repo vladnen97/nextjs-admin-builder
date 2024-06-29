@@ -61,9 +61,12 @@ export const UpsertEntityFormProvider =
                     <FormLabel>{fieldConfig.title}</FormLabel>
                     <FormControl>
                       {fieldConfig.type === 'select' ? (
-                        <Select>
-                          <SelectTrigger className="w-[180px]">
-                            <SelectValue placeholder="..." />
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Choose Role" />
                           </SelectTrigger>
                           <SelectContent>
                             {fieldConfig.options.map((option) => (
@@ -76,13 +79,13 @@ export const UpsertEntityFormProvider =
                             ))}
                           </SelectContent>
                         </Select>
-                      ) : (
+                      ) : fieldConfig.type === 'text' ? (
                         <Input
                           placeholder="..."
                           {...field}
                           autoComplete={'off'}
                         />
-                      )}
+                      ) : null}
                     </FormControl>
                     <FormMessage />
                   </FormItem>

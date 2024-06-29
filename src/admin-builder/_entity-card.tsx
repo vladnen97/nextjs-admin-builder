@@ -2,26 +2,63 @@ import { AdminClientEntityBuilderContainer } from '@/admin-builder/_container'
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { GetEntityResult } from '@/admin-builder/_types'
+import { Button } from '@/components'
+import { useTransition } from 'react'
 
 export const EntityCardProvider = AdminClientEntityBuilderContainer.provider(
-  () => {
-    return function EntityCard({}: {}) {
+  ({ deps: { config, action } }) => {
+    return function EntityCard({
+      entity,
+      onDelete,
+    }: {
+      key?: number
+      entity: GetEntityResult
+      onDelete?: () => void
+    }) {
+      const [isLoading, startTransition] = useTransition()
+
+      const handleDelete = () => {
+        startTransition(async () => {
+          await action({ type: 'delete', id: entity.id })
+
+          onDelete?.()
+        })
+      }
+
       return (
         <Card>
           <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
+            <CardTitle>{entity.id}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            {Object.entries(entity).map(([key, value]) => {
+              if (!config.fields.find((field) => field.name === key)) {
+                return null
+              }
+
+              return (
+                <div key={key}>
+                  {key}: {String(value)}
+                </div>
+              )
+            })}
           </CardContent>
-          <CardFooter>
-            <p>Card Footer</p>
+          <CardFooter className={'justify-end p-2 mt-2 gap-3'}>
+            <Button variant={'outline'} disabled={isLoading}>
+              Edit
+            </Button>
+            <Button
+              variant={'destructive'}
+              onClick={handleDelete}
+              disabled={isLoading}
+            >
+              Delete
+            </Button>
           </CardFooter>
         </Card>
       )
