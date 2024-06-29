@@ -9,7 +9,13 @@ export const EntityPageProvider = AdminClientEntityBuilderContainer.provider(
           <h1>{config.title}</h1>
 
           <div className={'m-8 flex gap-2'}>
-            <Button onClick={action}>call server action</Button>
+            <Button
+              onClick={() => {
+                void action()
+              }}
+            >
+              call server action
+            </Button>
           </div>
           <div>
             {config.fields.map((field) => (
