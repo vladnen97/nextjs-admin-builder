@@ -22,7 +22,7 @@ export type GetEntitiesParams = {
 export type CreateEntityParams = {
   type: 'create'
   data: {
-    [key: string]: string | number | boolean
+    [key: string]: string | number | boolean | null | Date
   }
 }
 
@@ -30,7 +30,7 @@ export type UpdateEntityParams = {
   type: 'update'
   id: number
   data: {
-    [key: string]: string | number | boolean
+    [key: string]: string | number | boolean | null | Date
   }
 }
 
