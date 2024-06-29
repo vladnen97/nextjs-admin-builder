@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/card'
 
 export const EntityCardProvider = AdminClientEntityBuilderContainer.provider(
-  (ctx) => {
+  () => {
     return function EntityCard({}: {}) {
       return (
         <Card>

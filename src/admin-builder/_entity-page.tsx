@@ -4,8 +4,6 @@ import { EntityCardProvider } from '@/admin-builder/_entity-card'
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
