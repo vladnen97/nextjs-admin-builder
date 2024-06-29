@@ -5,6 +5,8 @@ export const entityConfig: AdminEntityConfig = {
   title: 'Users',
   fields: [
     { type: 'text', name: 'name', title: 'Name' },
+    { type: 'text', name: 'email', title: 'Email' },
+    { type: 'text', name: 'password', title: 'Password' },
     {
       type: 'select',
       name: 'role',
